@@ -1,0 +1,352 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="black">
+	<link rel="shortcut icon" sizes="196x196" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E&#128054;%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+	<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E&#128054;%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
+
+
+<!-- index.html -->
+
+<style>
+
+:root {
+	--link-color: #fff;
+	--h1-color: #cdcdcd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body { height: 100% }
+a { text-decoration:none; color:var(--link-color)}
+.clear{clear:both}
+
+.alert {
+  border-radius:5px;
+  margin-top:10px;
+  padding: 0px;
+  background-color: rgba(255, 0, 0, 0.1);
+  color: white;
+  float:right;
+  overflow:hidden
+}
+.alert:nth-child(1){
+	background:rgba(255, 0, 0, 0.4);
+}
+.alertHead{
+	border-radius:5px 5px 0 0;
+	background:rgba(255, 0, 0, 0.3);
+	color:white;
+	padding:8px
+}
+
+.alertBody{
+	padding:8px;
+	font-family: monospace;
+	white-space: pre;
+	text-align:left;
+}
+.container {
+  min-height: 100vh;
+  font-family: Montserrat, sans-serif;
+}
+
+section {
+	position: absolute;
+	top: 0;
+	height: 100vh;
+	width: 0;
+	opacity: 0;
+	transition: all ease-in .5s;
+/*    display: flex; */
+	text-align:right;
+	justify-content: right;
+	align-items: right;
+	padding:5vw;
+}
+nav {
+	position: absolute;
+	left: 0;
+	top:0;
+	z-index: 50;
+	display: flex;
+}
+body, section {
+	background:
+		radial-gradient(black 15%, transparent 16%) 0 0,
+		radial-gradient(black 15%, transparent 16%) 8px 8px,
+		radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+		radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+	background-color:#282828;
+	background-size:16px 16px;
+}
+.sectImg{
+	border-radius:4px;
+	margin-bottom:20px;
+	border:1px solid #fff;
+}
+
+input[type=text], input[type=password], select, textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+@media (orientation: landscape) {
+	nav {
+		height:100vh;
+		flex-direction: column;
+	}
+	section {
+		padding-top:10vh;
+	}
+	.sectImg{
+		height:60vh;
+		width:60vh;
+	}
+	input[type=text],input[type=password],input[type=submit], select, textarea, .alert {
+		width:50vw
+	}
+	#section1{
+		background: radial-gradient(ellipse at top left, #3b4775 0%, #090a0f 100%);
+	}
+}
+
+@media (orientation: portrait) {
+	nav {
+		width:100vw;
+		flex-direction: row;
+	}
+	section {
+		padding-top:100px;
+	}
+	.sectImg{
+		height:90vw;
+		width:90vw;
+	}
+	input[type=text],input[type=password],input[type=submit], select, textarea, .alert {
+		width:90vw
+	}
+	#section1{
+		background: radial-gradient(ellipse at top left, #3b4775 0%, #090a0f 100%);
+	}
+}
+
+nav a {
+    font-size: 50px;
+    color: var(--link-color);
+    text-decoration: none;
+    padding: 20px;
+    text-align: center;
+    float:left;
+}
+
+a:active {
+  color: yellow;
+}
+
+section h1 {
+    color: var(--h1-color);
+    font-size: 30px;
+    opacity: 0;
+}
+
+/* Styles applied on trigger */
+section:target {
+    opacity: 1;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+}
+
+section:target h1 {
+    opacity: 0;
+    animation: 2s fadeIn forwards .5s;
+}
+
+#section1 {
+	color:#fff;
+}
+
+#section2 {
+	background:
+		radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 9%, hsla(0, 100%, 20%, 0) 9%) 0 0,
+		radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 8%, hsla(0, 100%, 20%, 0) 10%) 50px 50px,
+		radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 50px 0,
+		radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 0 50px,
+		radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 50px 0,
+		radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 100px 50px,
+		radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 0 0,
+		radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 50px 50px,
+		linear-gradient(45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0,
+		linear-gradient(-45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0;
+	background-color: #300;
+	background-size: 100px 100px;
+}
+
+@keyframes fadeIn {
+    100% { opacity:1 }
+}
+
+</style>
+</head>
+<body>
+	<nav>
+		<a href="#section1"><i class="fab fa-watchman-monitoring"></i></a>
+		<a href="#section2"><i class="fas fa-satellite-dish"></i></a>
+		<a href="javascript:toggleFullscreen()" ><i class="fa fa-expand-arrows-alt"></i></a>
+	</nav>
+	<div class='container'>
+		<section id="section1">
+			<form id="formElem" >
+				<input type="text" name="username" placeholder="Username">
+				<input type="password" name="password" placeholder="Passowrd">
+				<input type="submit" value="Submit">
+			</form>
+		</section>
+		<section id="section2">
+
+		</section>
+	</div>
+<script>
+
+
+const d = console.log
+
+let audio =new AudioContext() // browsers limit the number of concurrent audio contexts, so you better re-use'em
+
+function beep(vol, freq, duration){
+  v=audio.createOscillator()
+  u=audio.createGain()
+  v.connect(u)
+  v.frequency.value=freq
+  v.type="square"
+  u.connect(audio.destination)
+  u.gain.value=vol*0.01
+  v.start(audio.currentTime)
+  v.stop(audio.currentTime+duration*0.001)
+}
+
+function blink(obj) {
+	setTimeout(() => { obj.style.visibility = 'hidden'  }, 100)
+	setTimeout(() => { obj.style.visibility = 'visible' }, 200)
+	setTimeout(() => { obj.style.visibility = 'hidden'  }, 300)
+	setTimeout(() => { obj.style.visibility = 'visible' }, 400)
+	setTimeout(() => { obj.style.visibility = 'hidden'  }, 500)
+	setTimeout(() => { obj.style.visibility = 'visible' }, 600)
+	beep(100, 520, 200)
+}
+
+function showAlert(parent, msg, notify){
+
+	let href = "#"
+
+	if(	typeof msg.extras !== 'undefined' &&
+		typeof msg.extras['client::notification'] !== 'undefined' &&
+		typeof msg.extras['client::notification'].click !== 'undefined' &&
+		typeof msg.extras['client::notification'].click.url !== 'undefined' )
+	{
+		href = msg.extras['client::notification'].click.url
+	}
+	if( typeof msg.date !== 'undefined')
+	{
+		msg.title = msg.date.split('.')[0].replace('T',' ') + ' ' + msg.title
+	}
+	if(notify) try{ new Notification(msg.title + '\n' + msg.message) }catch(e){ d(e) }
+
+	const 	newElLink = document.createElement("a")
+			newElLink.setAttribute('href',href)
+			newElLink.setAttribute('target','_new')
+			newElLink.className = 'alert'
+
+	const 	newEl = document.createElement("div")
+			newElLink.appendChild(newEl)
+
+	const 	newElHead = document.createElement("div")
+			newElHead.className = 'alertHead'
+	const 	newElHeadText = document.createTextNode(msg.title)
+			newElHead.appendChild(newElHeadText)
+
+	const 	newElBody = document.createElement("div")
+
+			newElBody.className = 'alertBody'
+	const 	newElBodyText = document.createTextNode(msg.message)
+			newElBody.appendChild(newElBodyText)
+
+	newEl.appendChild(newElHead)
+	newEl.appendChild(newElBody)
+
+	parent.prepend(newElLink)
+	blink(newEl)
+}
+
+
+function toggleFullscreen() {
+  let elem = document.querySelector("body")
+  if (!document.fullscreenElement) {
+    elem.requestFullscreen().catch(err => {
+      alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`)
+    })
+  } else {
+    document.exitFullscreen()
+  }
+  screen.orientation.lock(screen.orientation.type) // Lock to current orientation type
+}
+
+
+
+document.body.onload = () =>{
+
+	if(!window.location.hash) window.location.hash = 'section1'
+
+	formElem.onsubmit = async (e) => {
+		e.preventDefault();
+		fetch('https://example.com/client', {
+			method: 'POST',
+			mode: 'cors',
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			headers: {
+				"content-type": "application/json; charset=utf-8",
+				"authorization": "Basic " + btoa(formElem.username.value + ':' + formElem.password.value)
+			},
+			body: `{"name":"Web"}`,
+			credentials: "include"
+		})
+		.then(response => response.json())
+		.then(data => { d('Success:', data) })
+		.catch(error => { d('Error:', error) })
+	}
+}
+
+
+
+
+</script>
+</body>
+</html>
