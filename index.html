@@ -354,7 +354,7 @@ document.body.onload = () =>{
 		})
 		.then(response => response.json())
 		.then(data => { d('Success:', data) })
-		.catch(error => { d('Error:', error) })
+		.catch(error => { showAlert(loginEl, {'title':loginEl.action, 'message':error.message}, true ) })
 	}
 }
 
