@@ -4,8 +4,8 @@
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, user-scalable=no">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="theme-color" content="black">
-	<link rel="shortcut icon" sizes="196x196" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E&#128054;%3C/text%3E%3C/svg%3E" type="image/svg+xml">
-	<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E&#128054;%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
+	<link rel="shortcut icon" sizes="196x196" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🖌%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+	<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🖌%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
 
 
@@ -79,13 +79,13 @@ nav {
 	display: flex;
 }
 body, section {
-	background:
+/*	background:
 		radial-gradient(black 15%, transparent 16%) 0 0,
 		radial-gradient(black 15%, transparent 16%) 8px 8px,
 		radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
 		radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
 	background-color:#282828;
-	background-size:16px 16px;
+	background-size:16px 16px;*/
 }
 .sectImg{
 	border-radius:4px;
@@ -131,8 +131,8 @@ input[type=submit]:hover {
 	input[type=text],input[type=password],input[type=submit], select, textarea, .alert {
 		width:50vw
 	}
-	#section1{
-		background: radial-gradient(ellipse at top left, #3b4775 0%, #090a0f 100%);
+	body {
+		background: linear-gradient(to right, #3b4775 0%, #090a0f 100%);
 	}
 }
 
@@ -151,12 +151,12 @@ input[type=submit]:hover {
 	input[type=text],input[type=password],input[type=submit], select, textarea, .alert {
 		width:90vw
 	}
-	#section1{
-		background: radial-gradient(ellipse at top left, #3b4775 0%, #090a0f 100%);
+	body {
+		background: linear-gradient(to bottom, #3b4775 0%, #090a0f 100%);
 	}
 }
 
-nav a {
+nav a, .fa, .fas, .fab {
     font-size: 50px;
     color: var(--link-color);
     text-decoration: none;
@@ -224,7 +224,7 @@ section:target h1 {
 	</nav>
 	<div class='container'>
 		<section id="section1">
-			<form id="formElem" >
+			<form id="loginEl" action="https://example.com">
 				<input type="text" name="username" placeholder="Username">
 				<input type="password" name="password" placeholder="Passowrd">
 				<input type="submit" value="Submit">
@@ -319,21 +319,35 @@ function toggleFullscreen() {
   screen.orientation.lock(screen.orientation.type) // Lock to current orientation type
 }
 
-
+async function postData(url = '', method = 'PUT', data = {}) {
+  const response = await fetch(url, {
+    method: method, // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+		'Content-Type': 'application/json; charset=utf-8',
+	},
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer',
+    body: (method === 'GET' ? null : JSON.stringify(data) )
+  })
+  return response.json()
+}
 
 document.body.onload = () =>{
 
 	if(!window.location.hash) window.location.hash = 'section1'
 
-	formElem.onsubmit = async (e) => {
+	loginEl.onsubmit = async (e) => {
 		e.preventDefault();
-		fetch('https://example.com/client', {
+		fetch(loginEl.action, {
 			method: 'POST',
 			mode: 'cors',
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
 			headers: {
 				"content-type": "application/json; charset=utf-8",
-				"authorization": "Basic " + btoa(formElem.username.value + ':' + formElem.password.value)
+				"authorization": "Basic " + btoa(loginEl.username.value + ':' + loginEl.password.value)
 			},
 			body: `{"name":"Web"}`,
 			credentials: "include"
@@ -343,8 +357,6 @@ document.body.onload = () =>{
 		.catch(error => { d('Error:', error) })
 	}
 }
-
-
 
 
 </script>
