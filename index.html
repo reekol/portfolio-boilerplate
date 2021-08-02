@@ -280,24 +280,26 @@ const loadScripts	 = (srcArr, pointer = 0) => {
 
 document.body.onload = () => {
 
-	/*
-	loadScripts([
-		'plugins/canvas.js',
-		'plugins/palette.js',
-		'plugins/range.js',
-		'plugins/undoredo.js',
-		'plugins/print.js',
-		'plugins/uploadCanvas.js',
-		'plugins/handwriting.js',
-		'plugins/fullscreen.js',
-	])
-	*/
-
- 	loadScripts([
- 		'plugins/contacts.js',
- 		'plugins/messageme.js',
- 		'plugins/fullscreen.js',
- 	])
+	let project = window.location.hash.substr(1)
+	if(!project) project = 'portfolio'
+	let APPS = {
+		draw: [
+			'plugins/canvas.js',
+			'plugins/palette.js',
+			'plugins/range.js',
+			'plugins/undoredo.js',
+			'plugins/print.js',
+			'plugins/uploadCanvas.js',
+			'plugins/handwriting.js',
+			'plugins/fullscreen.js',
+		],
+		portfolio:[
+			'plugins/contacts.js',
+			'plugins/messageme.js',
+			'plugins/fullscreen.js',
+		]
+	}
+	loadScripts(APPS[project])
 }
 
 </script>
